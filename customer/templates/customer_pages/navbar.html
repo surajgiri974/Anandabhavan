@@ -1,0 +1,86 @@
+ <!-- Navbar Start -->
+ {% load static %}
+         <div class="container-fluid nav-bar bg-transparent">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+               <a href="{% url 'customer:home' %}" class="navbar-brand d-flex align-items-center text-center">
+                  <div class="icon p-2 me-2">
+                     <img class="img-fluid" src="{% static 'img/icon-deal.png' %}" alt="Icon" style="width: 30px; height: 30px;">
+                  </div>
+                  <h1 class="m-0 text-primary">Aanandbhavan</h1>
+               </a>
+               <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <div class="navbar-nav ms-auto">
+                     <a href="{% url 'customer:home' %}" class="nav-item nav-link active">Home</a>
+                     <a href="{% url 'customer:about' %}" class="nav-item nav-link">About</a>
+                     
+                     
+                     <a href="{% url 'customer:contact' %}" class="nav-item nav-link">Contact</a>
+                  </div>
+                  <!-- <a href="login.html" class="btn btn-primary px-3 d-none d-lg-flex">Login/Sign Up</a> -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Login
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                              <div class="px-12 py-12 px-md-12 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+                                 <div class="col-lg-12 mb-5 mb-lg-0">
+                                    <div class="card">
+                                       <div class="card-body py-5 px-md-5">
+                                          <form>
+                                             <!-- 2 column grid layout with text inputs for the first and last names -->
+                                             
+                                             <!-- Email input -->
+                                             <div class="form-outline mb-4">
+                                                <input type="email" id="form3Example3" class="form-control" />
+                                                <label class="form-label" for="form3Example3">Email address</label>
+                                             </div>
+                                             <!-- Password input -->
+                                             <div class="form-outline mb-4">
+                                                <input type="password" id="form3Example4" class="form-control" />
+                                                <label class="form-label" for="form3Example4">Password</label>
+                                             </div>
+                                            
+                                             <button type="submit" class="btn btn-primary btn-block mb-4 d-flex justify-content-center align-items-center">
+                                             Sign up
+                                             </button>
+                                             <!-- Register buttons -->
+                                             <div class="text-center">
+                                                <p>or sign up with:</p>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-facebook-f"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-google"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-twitter"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="fab fa-github"></i>
+                                                </button>
+                                             </div>
+                                          </form>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+         </div>
+         <!-- Navbar End -->
