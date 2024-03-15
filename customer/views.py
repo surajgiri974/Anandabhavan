@@ -5,7 +5,8 @@ from django.shortcuts import render
 class customer_home:
 
     def index(request):
-        return render(request,'customer_pages/index.html')
+        demo1 = { 'NAME' : 'ROHAN',}
+        return render(request,'customer_pages/index.html',{'demo' : demo1,})
     
     def about(request):
         return render(request,'customer_pages/about.html')
