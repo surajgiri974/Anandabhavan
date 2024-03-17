@@ -1,0 +1,17 @@
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    &times;
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+       {% if message.tags == 'success'%}
+       <div style="background-color: #90EE90;margin-top: 50px;height: 30px;text-align: center;font-size: medium;font-weight: bolder;border:1px black dotted ; border-radius: 5px 30px;">{{message}}</div>
+        {% elif message.tags == 'info'%}
+        <div style="background-color: #FFFFE0;margin-top: 50px;height: 30px;text-align: center;font-size: medium;font-weight: bolder;border:1px black dotted ; border-radius: 5px 30px;">{{message}}</div>
+        {% elif message.tags == 'warning'%}
+        <div style="background-color: #F0E68C;margin-top: 50px;height: 30px;text-align: center;font-size: medium;font-weight: bolder;border:1px black dotted ; border-radius: 5px 30px;">{{message}}</div>
+        {% elif message.tags == 'error'%}
+        <div style="background-color: #ff9999 ;margin-top: 50px;height: 30px;text-align: center;font-size: medium;font-weight: bolder;border:1px black dotted ; border-radius: 5px 30px;">{{message}}</div>
+      {% endif %}
+    {% endfor %}
+</ul>
+{% endif %}

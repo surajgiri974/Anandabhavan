@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from .models import *
+from django.contrib import messages
+import MySQLdb as mysql
 
 # Create your views here.
 
 class customer_home:
 
     def index(request):
-        demo1 = { 'NAME' : 'ROHAN',}
-        return render(request,'customer_pages/index.html',{'demo' : demo1,})
+        return render(request,'customer_pages/index.html')
     
     def about(request):
         return render(request,'customer_pages/about.html')
@@ -16,3 +19,30 @@ class customer_home:
     
     def property_list(request):
         return render(request,'customer_pages/property_list.html')
+    
+
+class customer_functionality:
+
+    def auth(request):
+        try:
+            email = request.POST.get('email',False)
+            password = request.POST.get('password',False)
+            if Customer.objects.get(customer_email = email, customer_password = password):
+                request.session['customer_email'] = email
+                return HttpResponseRedirect('/property_list')
+            else:
+                messages.add_message(request,messages.ERROR,'Invalid Credential')
+                return HttpResponseRedirect('/')
+        except Customer.DoesNotExist:
+            messages.add_message(request,messages.ERROR,'User Does Not Exist')
+            return HttpResponseRedirect('/')
+            
+    def logout(request):
+        try:
+            request.session.flush()
+            return redirect(customer_home.home)
+        except:
+            print("ERROR")
+            request.session.flush()
+            return HttpResponseRedirect('/')
+    

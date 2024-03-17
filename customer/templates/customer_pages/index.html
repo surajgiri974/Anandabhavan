@@ -29,9 +29,7 @@
           </div>
           <h1 class="m-0 text-primary">Anandabhavan</h1>
        </a>
-       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-       <span class="navbar-toggler-icon"></span>
-       </button>
+       
        <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto">
              <a href="{% url 'customer:home' %}" class="nav-item nav-link active">Home</a>
@@ -42,56 +40,35 @@
           </div>
           <!-- <a href="login.html" class="btn btn-primary px-3 d-none d-lg-flex">Login/Sign Up</a> -->
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Login
-          </button>
+          {% if 'customer_email' in request.session %}
+          <a href="{% url 'customer:logout' %}">
+          <button type="button" class="btn btn-primary">
+            Log Out
+            </button></a>
+          {% else %}
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Login
+            </button>
+           {% endif %}
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
              <div class="modal-dialog">
                 <div class="modal-content">
                    <div class="modal-header">
+                     {% if 'customer_email' in request.session %}
+                     <h5 class="modal-title" id="exampleModalLabel">Log Out</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     {% else %}
                       <h5 class="modal-title" id="exampleModalLabel">Login</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      {% endif %}
                    </div>
                    <div class="modal-body">
                       <div class="px-12 py-12 px-md-12 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
                          <div class="col-lg-12 mb-5 mb-lg-0">
                             <div class="card">
                                <div class="card-body py-5 px-md-5">
-                                  <form>
-                                     <!-- 2 column grid layout with text inputs for the first and last names -->
-                                     
-                                     <!-- Email input -->
-                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form3Example3" class="form-control" />
-                                        <label class="form-label" for="form3Example3">Email address</label>
-                                     </div>
-                                     <!-- Password input -->
-                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form3Example4" class="form-control" />
-                                        <label class="form-label" for="form3Example4">Password</label>
-                                     </div>
-                                    
-                                     <button type="submit" class="btn btn-primary btn-block mb-4 d-flex justify-content-center align-items-center">
-                                     Sign up
-                                     </button>
-                                     <!-- Register buttons -->
-                                     <div class="text-center">
-                                        <p>or sign up with:</p>
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
-                                        <i class="fab fa-facebook-f"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
-                                        <i class="fab fa-google"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
-                                        <i class="fab fa-twitter"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
-                                        <i class="fab fa-github"></i>
-                                        </button>
-                                     </div>
-                                  </form>
+                                 {% include 'customer_pages/login.html' %}
                                </div>
                             </div>
                          </div>
@@ -127,35 +104,7 @@
             </div>
          </div>
          <!-- Header End -->
-         <!-- Search Start -->
-         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
-            <div class="container">
-               <div class="row g-2">
-                  <div class="col-md-10">
-                     <div class="row g-2">
-                        <div class="col-md-8">
-                           <input type="text" class="form-control border-0 py-3" placeholder="Search Keyword" id="data">
-                        </div>
-                        <div class="col-md-4">
-                           <input class="form-control border-0 py-3"  style="font-weight: bolder;" placeholder="PUNE" readonly>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-2">
-                     <a href="{% url 'customer:property_list' %}">
-                        <button class="btn btn-dark border-0 w-100 py-3" onclick="show();">Search</button>
-                      </a>
-                      
-                  </div>
-                  </div><br/>
-               <div>
-                  <div class="col-md-1">
-                     <input type="text" class="form-control border-0 py-3" id="result"  placeholder="">
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- Search End -->
+         {% include 'customer_pages/search.html'  %}
          <!-- Category Start -->
          <div class="container-xxl py-5">
             <div class="container">
