@@ -13,3 +13,6 @@ class customer_home:
    
     def contact(request):
         return render(request,'customer_pages/contact.html')
+    
+    def property_list(request):
+        return render(request,'customer_pages/property_list.html')
