@@ -10,6 +10,6 @@ urlpatterns=[
     
     path('auth',views.customer_functionality.auth,name='auth'),    
     path('logout',views.customer_functionality.logout,name='logout'),    
-    
+    path('sign-up',views.customer_functionality.sign_up,name='sign-up'), 
 
 ]

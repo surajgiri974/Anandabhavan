@@ -46,3 +46,15 @@ class customer_functionality:
             request.session.flush()
             return HttpResponseRedirect('/')
     
+    def sign_up(request):
+        
+        customername=request.POST.get(customer_name, False)
+        customerusername=request.POST.get(customer_username,False)
+        customeremail=request.POST.get(customer_email,False)
+        customerphone=request.POST.get(customer_phone,False)
+        password=request.POST.get(password,False)
+        customer = Customer(customername,customeremail,customerphone,password,1)
+        customer.save()
+        return render(request,'customer_pages/index.html')
+        
+            
