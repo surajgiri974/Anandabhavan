@@ -53,7 +53,7 @@ class customer_functionality:
         customeremail=request.POST.get(customer_email,False)
         customerphone=request.POST.get(customer_phone,False)
         password=request.POST.get(password,False)
-        customer = Customer(customername,customeremail,customerphone,password,1)
+        customer = customer_name = request.POST['customer_name',]
         customer.save()
         return render(request,'customer_pages/index.html')
         
