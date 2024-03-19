@@ -1,0 +1,55 @@
+
+
+<form action="{% url 'customer:auth' %}" method="POST">
+
+  {% csrf_token %}
+   <!-- 2 column grid layout with text inputs for the first and last names -->
+   <div class="form-outline mb-4">
+    <input type="email" id="form3Example3" class="form-control" name="email" />
+    <label class="form-label" for="form3Example3">Enter Full Name</label>
+   </div>
+   <div class="form-outline mb-4">
+    <input type="email" id="form3Example3" class="form-control" name="email" />
+    <label class="form-label" for="form3Example3">Enter Username</label>
+    </div>
+   <!-- Email input -->
+   <div class="form-outline mb-4">
+      <input type="email" id="form3Example3" class="form-control" name="email" />
+      <label class="form-label" for="form3Example3">Enter Email address</label>
+   </div>
+   <!-- Password input -->
+   <div class="form-outline mb-4">
+      <input type="password" id="form3Example4" class="form-control" name="password" />
+      <label class="form-label" for="form3Example4">Create Password</label>
+   </div>
+   <div class="form-outline mb-4">
+    <input type="password" id="form3Example4" class="form-control" name="password" />
+    <label class="form-label" for="form3Example4">Re-enter Password</label>
+ </div>
+  
+   <button type="submit" class="btn btn-primary btn-block mb-4 d-flex justify-content-center align-items-center">
+   Sign up
+   </button>
+   <!-- Register buttons --> 
+   <div class="text-center">
+      <p>Already have an acoount ? </p>
+      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#signupModal">
+        Sign in here
+      </button>
+      <!-- <p>Forget your Password ? </p><a href="" <p>click here</p></a> -->
+      <!-- <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-facebook-f"></i>
+      </button>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-google"></i>
+      </button>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-twitter"></i>
+      </button>
+      <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-github"></i>
+      </button> -->
+   </div>
+   {% include 'customer_pages/messages.html' %}
+</form>
+
