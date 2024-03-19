@@ -48,13 +48,16 @@ class customer_functionality:
     
     def sign_up(request):
         
-        customername=request.POST.get(customer_name, False)
-        customerusername=request.POST.get(customer_username,False)
-        customeremail=request.POST.get(customer_email,False)
-        customerphone=request.POST.get(customer_phone,False)
-        password=request.POST.get(password,False)
-        customer = customer_name = request.POST['customer_name',]
+        customer_name = request.POST.get('customer_name', False)
+        customer_email = request.POST.get('customer_email',False)
+        customer_phone = request.POST.get('customer_phone',False)
+        password = request.POST.get('password',False)
+        customer = Customer(
+            customer_name = customer_name,
+            customer_email = customer_email,
+            customer_mobile = customer_phone,
+            customer_password = password,
+            account_type = 1)
         customer.save()
-        return render(request,'customer_pages/index.html')
-        
+        return HttpResponseRedirect('/')        
             

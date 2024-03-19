@@ -3,15 +3,22 @@
 <script>
  
   function check(){
-    var password = document.getElementsByName("password").value;
-    var repassword = document.getElementsByName("re_password").value;
-    if(password == repassword){
-      document.getElementById("showERR").value = "ss";
+    var password = document.getElementsByName("password");
+    var repassword = document.getElementsByName("re_password");
+    var msg =  document.getElementById("ERR");
+    
+    if(password != repassword){   
+      msg.style.color = "RED";
+      msg.innerHTML = "Password Does Not Match";
+    }else{
+      msg.style.color = "GREEN";
+      msg.innerHTML = "";
+
     }
   }
 
 </script>
-<form action="{% url 'customer:sign-up' %}" method="POST">
+<form action="#" method="POST">
 
   {% csrf_token %}
    <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -19,10 +26,6 @@
     <input type="text"  class="form-control" name="customer_name" />
     <label class="form-label" for="form3Example3">Enter Full Name</label>
    </div>
-   <div class="form-outline mb-4">
-    <input type="text"  class="form-control" name="customer_username" />
-    <label class="form-label" for="form3Example3">Enter Username</label>
-    </div>
    <!-- Email input -->
    <div class="form-outline mb-4">
       <input type="email"  class="form-control" name="customer_email" />
@@ -38,9 +41,10 @@
       <label class="form-label" for="form3Example4">Create Password</label>
    </div>
    <div class="form-outline mb-4">
-    <input type="password" class="form-control" name="re_password" onkeypress="check();"  />
+    <input type="password" class="form-control" name="re_password" onkeyup="check();"  />
     <label class="form-label" for="form3Example4">Re-enter Password</label>
  </div>
+ <span id="ERR"></span>
    <button type="submit" class="btn btn-primary btn-block mb-4 d-flex justify-content-center align-items-center" >
    Sign up
    </button>
