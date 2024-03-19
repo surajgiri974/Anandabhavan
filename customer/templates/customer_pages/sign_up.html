@@ -1,33 +1,43 @@
 
 
-<form action="{% url 'customer:auth' %}" method="POST">
+<script>
+ 
+  function check(){
+    var password = document.getElementsByName("password").value;
+    var repassword = document.getElementsByName("re_password").value;
+    if(password == repassword){
+      document.getElementById("showERR").value = "ss";
+    }
+  }
+
+</script>
+<form action="#" method="POST">
 
   {% csrf_token %}
    <!-- 2 column grid layout with text inputs for the first and last names -->
    <div class="form-outline mb-4">
-    <input type="email" id="form3Example3" class="form-control" name="email" />
+    <input type="text"  class="form-control" name="customer_name" />
     <label class="form-label" for="form3Example3">Enter Full Name</label>
    </div>
    <div class="form-outline mb-4">
-    <input type="email" id="form3Example3" class="form-control" name="email" />
+    <input type="text"  class="form-control" name="customer_username" />
     <label class="form-label" for="form3Example3">Enter Username</label>
     </div>
    <!-- Email input -->
    <div class="form-outline mb-4">
-      <input type="email" id="form3Example3" class="form-control" name="email" />
+      <input type="email"  class="form-control" name="customer_email" />
       <label class="form-label" for="form3Example3">Enter Email address</label>
    </div>
    <!-- Password input -->
    <div class="form-outline mb-4">
-      <input type="password" id="form3Example4" class="form-control" name="password" />
+      <input type="password"  class="form-control" name="password" />
       <label class="form-label" for="form3Example4">Create Password</label>
    </div>
    <div class="form-outline mb-4">
-    <input type="password" id="form3Example4" class="form-control" name="password" />
+    <input type="password" class="form-control" name="re_password" onkeypress="check();"  />
     <label class="form-label" for="form3Example4">Re-enter Password</label>
  </div>
-  
-   <button type="submit" class="btn btn-primary btn-block mb-4 d-flex justify-content-center align-items-center">
+   <button type="submit" class="btn btn-primary btn-block mb-4 d-flex justify-content-center align-items-center" >
    Sign up
    </button>
    <!-- Register buttons --> 
