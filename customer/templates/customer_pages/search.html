@@ -1,29 +1,51 @@
          <!-- Search Start -->
-         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
-            <div class="container">
-               <div class="row g-2">
-                  <div class="col-md-10">
-                     <div class="row g-2">
-                        <div class="col-md-8">
-                           <input type="text" class="form-control border-0 py-3" placeholder="Search Keyword" id="data">
-                        </div>
-                        <div class="col-md-4">
-                           <input class="form-control border-0 py-3"  style="font-weight: bolder;" placeholder="PUNE" readonly>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-2">
-                     <a href="{% url 'customer:property_list' %}">
-                        <button class="btn btn-dark border-0 w-100 py-3" onclick="show();">Search</button>
-                      </a>
-                      
-                  </div>
-                  </div><br/>
-               <div>
-                  <div class="col-md-1">
-                     <input type="text" class="form-control border-0 py-3" id="result"  placeholder="">
-                  </div>
-               </div>
-            </div>
-         </div>
+         <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.js"></script>
+  <link href="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css" rel="stylesheet" />
+  <script src="https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/maptilersdk.umd.js"></script>
+  <link href="https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/style.css" rel="stylesheet">
+  <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.2/mapbox-gl-draw.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.2/mapbox-gl-draw.css' type='text/css' />
+
+         <script type="module">
+            import DrawRectangle from "https://docs.maptiler.com/sdk-js/examples/geocoding-filter-draw-bbox/draw-rectangle-restrict-area.js";
+      
+            maptilersdk.config.apiKey = 'ovnmLY5uYC029SNELMgE';
+      
+            const bbox =[-0.499878,51.268789,0.304871,51.710863];
+      
+            const map = new maptilersdk.Map({
+              container: 'map', // container id
+              style: maptilersdk.MapStyle.BASIC,
+              bounds: bbox,
+              fitBoundsOptions: {
+                padding: {top: 25, bottom:25, left: 25, right: 25}
+              }
+            });
+      
+           
+            //set geocoding control filter search results to the Paris area
+            const gc = new maptilersdkMaptilerGeocoder.GeocodingControl({
+              bbox: bbox
+            });
+      
+            map.addControl(gc, 'top-left');
+      
+            function updateFilterArea(e) {
+              const data = draw.getAll();
+              const drawBbox = turf.bbox(data);
+              gc.setOptions({bbox: drawBbox});
+            }
+      
+            function deleteFilterArea(e) {
+              gc.setOptions({bbox: null});
+            }
+      
+          
+        </script>
+ <style>
+   #map { position: relative; top: 20%; bottom: 10%; left: 40% ;width: 10%; }
+ </style>
+   <ifrmae id="map"></iframe>   
+
          <!-- Search End -->

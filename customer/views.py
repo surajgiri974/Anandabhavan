@@ -67,4 +67,4 @@ class customer_functionality:
             customer.save()
             return HttpResponseRedirect('/')        
         except:
-            return HttpResponseRedirect('/')                     
+            return HttpResponseRedirect('/')   
